@@ -26,6 +26,14 @@ public class Collection {
         this.nom = nom;
     }
 
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
     public String getNom() {
         return nom;
     }
@@ -38,6 +46,8 @@ public class Collection {
     public String toString() {
         return "Collection [nom=" + nom + "]";
     }
+
+    
 
     
     
