@@ -50,7 +50,7 @@ public class CollectionRestController {
 	public Collection modifier(@PathVariable Integer id,@RequestBody Collection collection)
 	{
 	  collection.setId(id);
-      daoCollection.save(Collection);
+      daoCollection.save(collection);
       return collection;
 	}
 
