@@ -1,22 +1,62 @@
 package groupe1.biblio.model;
 
 import java.time.LocalDate;
-import java.util.Collection;
+import java.util.List;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
+import jakarta.persistence.UniqueConstraint;
+
+
+@Entity
+@Table(name="Livre")
 public class Livre {
 
+    @Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
+
+    @Column(length = 30,nullable = false,unique = true)
     private String titre;
+
+    @Column(length = 30,nullable = false)
     private String resume;
-    private LocalDate annee;
+
+    @Column(length = 30,nullable = false)
+    private String annee;
+
+    @ManyToOne 
+	@JoinColumn(name="auteur")
     private Auteur auteur;
+
+    @ManyToOne  
+	@JoinColumn(name="editeur")
     private Editeur editeur;
+
+    @ManyToOne 
+    @JoinColumn(name="collection")
     private Collection collection;
+
+    @ManyToOne 
+    @JoinColumn(name="genre")
     private Genre genre;
 
-    public Livre(String titre, String resume, LocalDate annee, Auteur auteur, Editeur editeur, Collection collection,
-            Genre genre)
-            
-            {
+    public Livre()
+    {}
+    
+    public Livre(Integer id, String titre, String resume, String annee, Auteur auteur, Editeur editeur,
+            Collection collection, Genre genre) {
+        this.id = id;
         this.titre = titre;
         this.resume = resume;
         this.annee = annee;
@@ -42,11 +82,11 @@ public class Livre {
         this.resume = resume;
     }
 
-    public LocalDate getAnnee() {
+    public String getAnnee() {
         return annee;
     }
 
-    public void setAnnee(LocalDate annee) {
+    public void setAnnee(String annee) {
         this.annee = annee;
     }
 
@@ -80,6 +120,14 @@ public class Livre {
 
     public void setGenre(Genre genre) {
         this.genre = genre;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     
