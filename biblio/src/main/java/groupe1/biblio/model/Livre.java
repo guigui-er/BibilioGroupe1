@@ -32,15 +32,14 @@ public class Livre {
     @Column(length = 30,nullable = false)
     private String resume;
 
-    @Column(length = 30,nullable = false)
-    private String annee;
+    private int annee;
 
     @ManyToOne 
-	@JoinColumn(name="auteur")
+	@JoinColumn(name="auteur",nullable = false)
     private Auteur auteur;
 
     @ManyToOne  
-	@JoinColumn(name="editeur")
+	@JoinColumn(name="editeur",nullable = false)
     private Editeur editeur;
 
     @ManyToOne 
@@ -48,13 +47,12 @@ public class Livre {
     private Collection collection;
 
     @ManyToOne 
-    @JoinColumn(name="genre")
+    @JoinColumn(name="genre",nullable = false)
     private Genre genre;
 
-    public Livre()
-    {}
+
     
-    public Livre(Integer id, String titre, String resume, String annee, Auteur auteur, Editeur editeur,
+    public Livre(Integer id, String titre, String resume, int annee, Auteur auteur, Editeur editeur,
             Collection collection, Genre genre) {
         this.id = id;
         this.titre = titre;
@@ -65,6 +63,9 @@ public class Livre {
         this.collection = collection;
         this.genre = genre;
     }
+
+    public Livre()
+    {}
 
     public String getTitre() {
         return titre;
@@ -82,11 +83,11 @@ public class Livre {
         this.resume = resume;
     }
 
-    public String getAnnee() {
+    public int getAnnee() {
         return annee;
     }
 
-    public void setAnnee(String annee) {
+    public void setAnnee(int annee) {
         this.annee = annee;
     }
 
@@ -129,6 +130,14 @@ public class Livre {
     public void setId(Integer id) {
         this.id = id;
     }
+
+    @Override
+    public String toString() {
+        return "Livre [id=" + id + ", titre=" + titre + ", resume=" + resume + ", annee=" + annee + ", auteur=" + auteur
+                + ", editeur=" + editeur + ", collection=" + collection + ", genre=" + genre + "]";
+    }
+
+    
 
     
 

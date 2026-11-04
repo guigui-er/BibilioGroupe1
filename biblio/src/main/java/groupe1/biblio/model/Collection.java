@@ -14,16 +14,20 @@ public class Collection {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
-         public Collection()
+    public Collection()
     {}
 
-         public Integer getId() {
-             return id;
-         }
+    public Collection(Integer id) {
+    this.id = id;
+    }
 
-         public void setId(Integer id) {
-             this.id = id;
-         }
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
 
 }

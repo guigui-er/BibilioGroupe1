@@ -12,16 +12,18 @@ public class Editeur {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
-         public Editeur()
+    public Editeur()
     {}
+    public Editeur(Integer id) {
+    this.id = id;
+    }
+    public Integer getId() {
+        return id;
+    }
 
-         public Integer getId() {
-             return id;
-         }
-
-         public void setId(Integer id) {
-             this.id = id;
-         }
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
 
 }
