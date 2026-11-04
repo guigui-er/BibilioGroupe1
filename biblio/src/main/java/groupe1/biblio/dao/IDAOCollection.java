@@ -1,5 +1,11 @@
-package main.java.groupe1.biblio.dao;
+package groupe1.biblio.dao;
 
-public class IDAOCollection extends JpaRepository<Collection,Integer>{
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import groupe1.biblio.model.Collection;
+
+
+
+public interface IDAOCollection extends JpaRepository<Collection,Integer>{
 
 }
