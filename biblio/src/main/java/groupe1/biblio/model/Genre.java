@@ -32,7 +32,7 @@ public class Genre {
     public Integer getId() {
         return id;
     }
-  
+
     public String getNom() {
         return nom;
     }
@@ -40,6 +40,4 @@ public class Genre {
     public void setNom(String nom) {
         this.nom = nom;
     }
-
-    
 }
