@@ -4,6 +4,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import groupe1.biblio.model.Editeur;
 
-public interface IDAOEditeur extends JpaRepository<Editeur, Integer> {
+public interface IDAOEditeur extends JpaRepository<Editeur,Integer>{
+
 
 }
