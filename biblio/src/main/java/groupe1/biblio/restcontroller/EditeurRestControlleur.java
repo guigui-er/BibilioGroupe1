@@ -25,7 +25,8 @@ public class EditeurRestControlleur {
     @Autowired
 	IDAOEditeur daoEditeur;
 
-    public List<Editeur> afficherTous(){
+    @GetMapping
+	public List<Editeur> afficherTous(){
         return daoEditeur.findAll();
     }
 
