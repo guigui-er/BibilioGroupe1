@@ -11,14 +11,14 @@
     |
     <label for="Auteur">Auteur : </label>
     <select id="Auteur" [formControl]="formAuteurCtrl" [compareWith]="memeId">
-      @for (a of Auteurs$ | async; track a.id) {
+      @for (a of (Auteurs$ | async); track a.id) {
           <option [ngValue]="a">{{ a.id}}-{{ a.nom}}</option>
         }
     </select>
     |
     <label for="Editeur">Editeur : </label>
     <select id="Editeur" [formControl]="formEditeurCtrl" [compareWith]="memeId">
-      @for (e of Editeurs$ | async; track e.id) {
+      @for (e of (Editeurs$ | async); track e.id) {
           <option [ngValue]="e">{{ e.id}}-{{ e.nom}}</option>
         }
     </select>
@@ -26,14 +26,14 @@
      <label for="Collection">Collection : </label>
     <select id="Collection" [formControl]="formCollectionCtrl" [compareWith]="memeId">
       <option [ngValue]="null" >no collection</option>
-      @for (c of Collections$ | async; track c.id) {
+      @for (c of (Collections$ | async); track c.id) {
       <option [ngValue]="c">{{c.id}}-{{ c.libelle}}</option>
     }
     </select>
     |
      <label for="Genre">Genre : </label>
     <select id="Genre" [formControl]="formGenreCtrl" [compareWith]="memeId">
-      @for (g of Genres$ | async; track g.id) {
+      @for (g of (Genres$ | async); track g.id) {
           <option [ngValue]="g">{{g.id}}-{{g.libelle}}</option>
         }
     </select>
@@ -90,7 +90,7 @@
     </thead>
 
         <tbody>
-        @for (l of Livres$ | async; track l.id) {
+        @for (l of (Livres$ | async) ; track l.id) {
         <tr>
                 <td>{{ l.id}}</td>
                 <td>{{ l.titre}}</td>
