@@ -1,1 +1,53 @@
-<p>auteur-page works!</p>
+<h1>Liste des Auteurs</h1>
+
+
+<form (submit)="ajouterOuModifierAuteur()" [formGroup]="formAuteurGroup">
+  <div>
+    <input type="text" [formControl]="formAuteurNomCtrl" placeholder="Nom"/>
+    <input type="text" [formControl]="formAuteurPrenomCtrl" placeholder="Prénom" />
+    <input type="text" [formControl]="formAuteurNationaliteCtrl" placeholder="Nationalité" /> <!-- liste déroulante pour sélectionner sa nationalité  ? https://lucidar.me/fr/web-dev/drop-down-list-of-citizenships/-->
+  </div>
+
+   @if (formAuteurNomCtrl.dirty && formAuteurNomCtrl.hasError('required')) {
+    <div>
+      Le nom est obligatoire !
+    </div>
+    }
+   @if (formAuteurPrenomCtrl.dirty && formAuteurPrenomCtrl.hasError('required')) {
+    <div>
+      Le prenom est obligatoire !
+    </div>
+    }
+   @if (formAuteurNationaliteCtrl.dirty && formAuteurNationaliteCtrl.hasError('required')) {
+    <div>
+      La nationalité est obligatoire !
+    </div>
+    }
+  <div>
+    <button [disabled]="formAuteurGroup.invalid" type="submit">Ajouter</button>
+  </div>
+</form>
+
+<table>
+    <tr>
+      <th>ID</th>
+      <th>Nom</th>
+      <th>Prénom</th>
+      <th>Nationalité</th>
+    </tr>
+    <tr *ngFor="let auteur of auteurs$ | async">
+      <td>{{ auteur.id }}</td>
+      <td>{{ auteur.nom }}</td>
+      <td>{{ auteur.prenom }}</td>
+      <td>{{ auteur.nationalite }}</td>
+      <td>
+        <button (click)="editerAuteur(auteur)">Modifier</button>
+      </td>
+      <td>
+        <button (click)="supprimerAuteur(auteur)">Supprimer</button>
+      </td>
+    </tr>
+</table> 
+
+
+
