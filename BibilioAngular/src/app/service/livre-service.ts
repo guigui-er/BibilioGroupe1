@@ -10,15 +10,16 @@ export class LivreService {
 
    constructor(private http: HttpClient) {}
 
-   url:string="//localhost:8080/api";
+   //url:string="//localhost:8080/api";
+   private apiUrl: string = "/Livre";
 
 
     public findAll(): Observable<Livre[]> {
-    return this.http.get<Livre[]>(`${this.url}/Livre`);
+    return this.http.get<Livre[]>(`${this.apiUrl}`);
   }
 
     public remove(value:Livre): Observable<void> {
-    return this.http.delete<void>(`${this.url}/Livre/${value.id}`);
+    return this.http.delete<void>(`${this.apiUrl}/${value.id}`);
   }
 
    /* public addObs(value:Livre): Observable<Livre> {
@@ -35,10 +36,10 @@ export class LivreService {
 
       console.log(livre.id);
       if (!livre.id) {
-        return this.http.post<Livre>(`${this.url}/Livre`, livre);
+        return this.http.post<Livre>(`${this.apiUrl}`, livre);
       }
 
-      return this.http.put<Livre>(`${this.url}/Livre/${livre.id }`,livre);
+      return this.http.put<Livre>(`${this.apiUrl}/${livre.id }`,livre);
     }
 
 }

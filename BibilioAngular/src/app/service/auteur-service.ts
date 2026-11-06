@@ -7,7 +7,8 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class AuteurService {
-    private apiUrl: string = "http://localhost:8080/api/auteur";
+    //private apiUrl: string = "http://localhost:8080/api/auteur";
+    private apiUrl: string = "/auteur";
     constructor(private http: HttpClient) {
     }
 
