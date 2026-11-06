@@ -96,7 +96,7 @@ export class LivrePage implements OnInit {
         startWith(null),
         // Fonction qui sera déclenchée dès qu'une nouvelle valeur dans le flux arrivera
         switchMap(() => {
-          return this.AuteurService.findAllObs();
+          return this.AuteurService.findAll();
         })
       );
       this.Editeurs$ = this.refresh$.pipe(
@@ -104,7 +104,7 @@ export class LivrePage implements OnInit {
         startWith(null),
         // Fonction qui sera déclenchée dès qu'une nouvelle valeur dans le flux arrivera
         switchMap(() => {
-          return this.EditeurService.findAllObs();
+          return this.EditeurService.findAll();
         })
       );
       this.Genres$ = this.refresh$.pipe(
@@ -112,7 +112,7 @@ export class LivrePage implements OnInit {
         startWith(null),
         // Fonction qui sera déclenchée dès qu'une nouvelle valeur dans le flux arrivera
         switchMap(() => {
-          return this.GenreService.findAllObs();
+          return this.GenreService.findAll();
         })
       );
 

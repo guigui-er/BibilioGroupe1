@@ -1,4 +1,6 @@
-<p>livre-page works!</p>
+<h1>Liste des livres</h1>
+
+
 <form (submit)="ajouterLivre()" [formGroup]="formLivreGroup">
   <div>
     <input type="text" [formControl]="formTitreCtrl" placeholder="Titre"/>
@@ -29,10 +31,10 @@
     }
     </select>
     |
-     <label for="Collection">Collection : </label>
+     <label for="Genre">Genre : </label>
     <select id="Genre" [formControl]="formGenreCtrl" [compareWith]="memeId">
       @for (g of Genres$ | async; track g.id) {
-          <option [ngValue]="g">{{ g.id}}-{{ g.nom}}</option>
+          <option [ngValue]="g">{{g.id}}-{{g.libelle}}</option>
         }
     </select>
   </div>
@@ -97,7 +99,7 @@
                 <td>{{ l.auteur.id}}-{{ l.auteur.nom}}</td>
                 <td>{{ l.editeur.id}}-{{ l.editeur.nom}}</td>
                 <td>{{ l.collection?.id}}-{{ l.collection?.libelle}}</td>
-                <td>{{ l.genre.id}}-{{ l.genre.nom}}</td>
+                <td>{{ l.genre.id}}-{{ l.genre.libelle}}</td>
                 <td><button (click)="supprimerLivre(l)">Supprimer</button></td>
                 <td><button (click)="editerMatiere(l)">Modifier</button></td>
         </tr>}
