@@ -18,4 +18,8 @@ export const routes: Routes = [
     path: 'auteur',
     component: AuteurPage
   }
+    {
+    path: 'editeur',
+    component: EditeurPage
+  }
 ];
