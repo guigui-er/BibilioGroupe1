@@ -76,4 +76,10 @@ export class AvisPage implements OnInit {
     this.formAvisGroup.reset(); // Et c'est reparti pour un tour !
   }
 
+  protected trierParNote(avis: Avis) {
+    // Méthode à implémenter dans le service
+    // Possible de prendre les méthodes du DAO ?
+    return avis.note;
+  }
+
 }
