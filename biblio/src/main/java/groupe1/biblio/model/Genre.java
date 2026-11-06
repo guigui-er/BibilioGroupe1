@@ -16,13 +16,13 @@ public class Genre {
 	private Integer id;
 
 	@Column(length = 50,nullable = false)
-	private String nom;
+	private String libelle;
 	
 	public Genre() {}
 
-	public Genre(Integer id, String nom) {
+	public Genre(Integer id, String libelle) {
 		this.id = id;
-		this.nom = nom;
+		this.libelle = libelle;
 	}
 
     public void setId(Integer id) {
@@ -33,11 +33,11 @@ public class Genre {
         return id;
     }
 
-    public String getNom() {
-        return nom;
+    public String getLibelle() {
+        return libelle;
     }
     
-    public void setNom(String nom) {
-        this.nom = nom;
+    public void setLibelle(String libelle) {
+        this.libelle = libelle;
     }
 }
