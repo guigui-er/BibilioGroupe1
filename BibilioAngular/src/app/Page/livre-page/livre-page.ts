@@ -47,7 +47,7 @@ export class LivrePage implements OnInit {
     protected formGenreCtrl!: FormControl;
 
     constructor(private formBuilder:FormBuilder,private title: Title){
-        this.title.setTitle("Livre List");
+
 
     }
 
@@ -88,7 +88,7 @@ export class LivrePage implements OnInit {
         startWith(null),
         // Fonction qui sera déclenchée dès qu'une nouvelle valeur dans le flux arrivera
         switchMap(() => {
-          return this.LivreService.findAllObs();
+          return this.LivreService.findAll();
         })
       );
       this.Auteurs$ = this.refresh$.pipe(
@@ -96,7 +96,7 @@ export class LivrePage implements OnInit {
         startWith(null),
         // Fonction qui sera déclenchée dès qu'une nouvelle valeur dans le flux arrivera
         switchMap(() => {
-          return this.AuteurService.findAllObs();
+          return this.AuteurService.findAll();
         })
       );
       this.Editeurs$ = this.refresh$.pipe(
@@ -104,7 +104,7 @@ export class LivrePage implements OnInit {
         startWith(null),
         // Fonction qui sera déclenchée dès qu'une nouvelle valeur dans le flux arrivera
         switchMap(() => {
-          return this.EditeurService.findAllObs();
+          return this.EditeurService.findAll();
         })
       );
       this.Genres$ = this.refresh$.pipe(
@@ -112,7 +112,7 @@ export class LivrePage implements OnInit {
         startWith(null),
         // Fonction qui sera déclenchée dès qu'une nouvelle valeur dans le flux arrivera
         switchMap(() => {
-          return this.GenreService.findAllObs();
+          return this.GenreService.findAll();
         })
       );
 
@@ -139,8 +139,13 @@ export class LivrePage implements OnInit {
       };
 
 
-      this.LivreService.addObs(livre).subscribe(() => {
+      //this.LivreService.addObs(livre).subscribe(() => {
+          //this.refresh$.next();});
+
+      this.LivreService.save(livre).subscribe(() => {
           this.refresh$.next();});
+
+      this.editingLivreId = undefined;
 
       this.formLivreGroup.reset();
     }
@@ -160,10 +165,15 @@ export class LivrePage implements OnInit {
 
     protected supprimerLivre(livre: Livre) {
 
-       this.LivreService.deleteObs(livre).subscribe(()=>{
+       this.LivreService.remove(livre).subscribe(()=>{
         this.refresh$.next();
         });
       }
+
+    protected annulerEdition() {
+    this.editingLivreId = undefined;
+    this.formLivreGroup.reset();
+  }
 
     protected memeId(a: {id:number} | null,b: {id:number} | null):boolean {
       return (a?.id===b?.id)? true: false;

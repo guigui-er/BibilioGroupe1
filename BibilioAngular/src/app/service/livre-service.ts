@@ -13,19 +13,32 @@ export class LivreService {
    url:string="//localhost:8080/api";
 
 
-    public findAllObs(): Observable<Livre[]> {
+    public findAll(): Observable<Livre[]> {
     return this.http.get<Livre[]>(`${this.url}/Livre`);
   }
 
-    public deleteObs(value:Livre): Observable<void> {
+    public remove(value:Livre): Observable<void> {
     return this.http.delete<void>(`${this.url}/Livre/${value.id}`);
   }
 
-    public addObs(value:Livre): Observable<Livre> {
+   /* public addObs(value:Livre): Observable<Livre> {
     return this.http.post<Livre>(`${this.url}/Livre`, value);
   }
 
     public update(value:Livre): Observable<Livre> {
     return this.http.put<Livre>(`${this.url}/Livre/${value.id }`,value);
-  }
+  }*/
+
+
+
+    public save(livre: Livre): Observable<Livre> {
+
+      console.log(livre.id);
+      if (!livre.id) {
+        return this.http.post<Livre>(`${this.url}/Livre`, livre);
+      }
+
+      return this.http.put<Livre>(`${this.url}/Livre/${livre.id }`,livre);
+    }
+
 }
