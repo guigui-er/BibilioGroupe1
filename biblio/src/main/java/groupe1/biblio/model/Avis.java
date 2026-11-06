@@ -83,7 +83,4 @@ public class Avis {
     public void setDate(LocalDate date) {
         this.date = date;
     }
-
-
-
 }

@@ -2,7 +2,9 @@ package groupe1.biblio.dto;
 
 import java.time.LocalDate;
 
+import groupe1.biblio.model.Auteur;
 import groupe1.biblio.model.Avis;
+import groupe1.biblio.model.Livre;
 
 public class AvisDTO {
 
@@ -18,7 +20,7 @@ public class AvisDTO {
 
     private String titreLivre;
 
-    private String auteurLivre;
+    private Auteur auteurLivre;
 
     private Integer idLivre;
 
@@ -83,11 +85,11 @@ public class AvisDTO {
         this.titreLivre = titreLivre;
     }
 
-    public String getAuteurLivre() {
+    public Auteur getAuteurLivre() {
         return auteurLivre;
     }
 
-    public void setAuteurLivre(String auteurLivre) {
+    public void setAuteurLivre(Auteur auteurLivre) {
         this.auteurLivre = auteurLivre;
     }
 
