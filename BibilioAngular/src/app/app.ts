@@ -1,8 +1,9 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { LivrePage } from './Page/livre-page/livre-page';
 
 @Component({
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, LivrePage],
   selector: 'app-root',
   styleUrl: './app.css',
   templateUrl: './app.html',
