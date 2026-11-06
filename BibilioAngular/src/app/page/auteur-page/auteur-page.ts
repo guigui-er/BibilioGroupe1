@@ -42,7 +42,7 @@ export class AuteurPage {
 
       this.formAuteurGroup = this.formBuilder.group({
         nom: this.formAuteurNomCtrl,
-        prenom: this.formAuteurNomCtrl,
+        prenom: this.formAuteurPrenomCtrl,
         nationalite: this.formAuteurNationaliteCtrl
       });
 
