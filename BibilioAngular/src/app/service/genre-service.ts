@@ -7,7 +7,8 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root',
 })
 export class GenreService {
- private apiUrl: string = "http://localhost:8080/api/genre";
+ //private apiUrl: string = "http://localhost:8080/api/genre";
+  private apiUrl: string = "/genre";
   private http: HttpClient = inject(HttpClient);
 
   public findAll(): Observable<Genre[]> {
