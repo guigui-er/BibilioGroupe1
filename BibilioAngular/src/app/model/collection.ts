@@ -1,6 +1,6 @@
 export interface Collection {
-  id?:number;
-libelle:string;
+id?:number;
+nom:string;
 
 
 }
