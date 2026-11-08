@@ -27,6 +27,7 @@ import groupe1.biblio.dao.IDAOAdherent;
 import groupe1.biblio.dto.AuthRequest;
 import groupe1.biblio.dto.SubscribeRequest;
 import groupe1.biblio.model.Adherent;
+import groupe1.biblio.dto.AuthResponse;
 
 
 @RestController
@@ -46,7 +47,7 @@ public class AdherentRestController {
     private AuthenticationManager authenticationManager;
 
     @PostMapping("/auth")
-    public String auth(@RequestBody AuthRequest request) {
+    public AuthResponse auth(@RequestBody AuthRequest request) {
         // On prépare l'authentification utilisateur
         Authentication auth = new UsernamePasswordAuthenticationToken(request.username(), request.password());
 
@@ -87,10 +88,12 @@ public class AdherentRestController {
         ;
 
         // Génération du jeton JWT avec le JwtEncoder
-        return this.jwtEncoder
+        String token = this.jwtEncoder
             .encode(JwtEncoderParameters.from(header, payload))
             .getTokenValue()
         ;
+
+        return new AuthResponse(true, token);
     }
 
     @PostMapping("/subscribe")

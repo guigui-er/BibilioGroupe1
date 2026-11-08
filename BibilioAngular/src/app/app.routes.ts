@@ -3,6 +3,7 @@ import { GenrePage } from './page/genre-page/genre-page';
 import { AuteurPage } from './page/auteur-page/auteur-page';
 import { EditeurPage } from './page/editeur-page/editeur-page';
 import { LivrePage } from './page/livre-page/livre-page';
+import { LoginPage } from './page/login-page/login-page';
 
 export const routes: Routes = [
    {
@@ -24,8 +25,12 @@ export const routes: Routes = [
     path: 'editeur',
     component: EditeurPage
   },
-    {
+  {
     path: 'livre',
     component: LivrePage
-  }
+  },
+    {
+    path: 'login',
+    component: LoginPage
+  },
 ];
