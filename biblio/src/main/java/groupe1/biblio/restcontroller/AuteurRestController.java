@@ -17,7 +17,7 @@ import groupe1.biblio.model.Auteur;
 
 @RestController 
 @RequestMapping ("/api/auteur")
-@CrossOrigin("*")
+
 public class AuteurRestController {
 
     private final IDAOAuteur daoAuteur;
