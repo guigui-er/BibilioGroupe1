@@ -16,7 +16,7 @@ import groupe1.biblio.dao.IDAOCollection;
 import groupe1.biblio.model.Collection;
 
 @RestController 
-@RequestMapping ("api/collection")
+@RequestMapping ("/api/collection")
 public class CollectionRestController {
     @Autowired 
     IDAOCollection daoCollection;

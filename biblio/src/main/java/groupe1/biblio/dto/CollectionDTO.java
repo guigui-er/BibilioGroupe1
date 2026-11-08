@@ -9,11 +9,11 @@ public class CollectionDTO {
     private Integer id;
     private String nom;
 
-    public static CollectionDTO convert (Collection collection)
-    {
-        CollectionDTO collectionDto = new CollectionDTO();
-        BeanUtils.copyProperties(collection, collectionDto);
-        return collectionDto;
+    public CollectionDTO () {}
+
+    public CollectionDTO(Integer id, String nom) {
+        this.id = id;
+        this.nom = nom;
     }
 
     public Integer getId() {
