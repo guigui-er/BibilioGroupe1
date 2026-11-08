@@ -121,7 +121,7 @@ export class LivrePage implements OnInit {
         startWith(null),
         // Fonction qui sera déclenchée dès qu'une nouvelle valeur dans le flux arrivera
         switchMap(() => {
-          return this.CollectionService.findAllObs();
+          return this.CollectionService.findAll();
         })
       );
 
@@ -151,7 +151,7 @@ export class LivrePage implements OnInit {
     }
 
 
-    protected editerMatiere(livre: Livre) {
+    protected editerLivre(livre: Livre) {
       this.editingLivreId = livre.id;
       this.formTitreCtrl.setValue(livre.titre);
       this.formResumeCtrl.setValue(livre.resume);

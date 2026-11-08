@@ -27,7 +27,7 @@
     <select id="Collection" [formControl]="formCollectionCtrl" [compareWith]="memeId">
       <option [ngValue]="null" >no collection</option>
       @for (c of (Collections$ | async); track c.id) {
-      <option [ngValue]="c">{{c.id}}-{{ c.libelle}}</option>
+      <option [ngValue]="c">{{c.id}}-{{ c.nom}}</option>
     }
     </select>
     |
@@ -98,10 +98,10 @@
                 <td>{{ l.annee}}</td>
                 <td>{{ l.auteur.id}}-{{ l.auteur.nom}}</td>
                 <td>{{ l.editeur.id}}-{{ l.editeur.nom}}</td>
-                <td>{{ l.collection?.id}}-{{ l.collection?.libelle}}</td>
+                <td>{{ l.collection?.id}}-{{ l.collection?.nom}}</td>
                 <td>{{ l.genre.id}}-{{ l.genre.libelle}}</td>
                 <td><button (click)="supprimerLivre(l)">Supprimer</button></td>
-                <td><button (click)="editerMatiere(l)">Modifier</button></td>
+                <td><button (click)="editerLivre(l)">Modifier</button></td>
         </tr>}
     </tbody>
 
