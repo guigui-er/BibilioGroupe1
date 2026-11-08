@@ -1,4 +1,4 @@
-import { Injectable, Service } from '@angular/core';
+import { inject, Injectable, Service } from '@angular/core';
 import { Collection } from '../model/collection';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
@@ -7,25 +7,22 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root',
 })
 export class CollectionService {
+  private apiUrl: string = "/collection";
+  private http: HttpClient = inject(HttpClient);
 
-   constructor(private http: HttpClient) {}
-
-   url:string="//localhost:8080/api";
-
-
-    public findAllObs(): Observable<Collection[]> {
-    return this.http.get<Collection[]>(`${this.url}/collection`);
+  public findAll(): Observable<Collection[]> {
+    return this.http.get<Collection[]>(this.apiUrl);
   }
 
-    public deleteObs(value:Collection): Observable<void> {
-    return this.http.delete<void>(`${this.url}/collection/${value.id}`);
+  public save(collection: Collection): Observable<Collection> {
+    if (!collection.id) {
+      return this.http.post<Collection>(this.apiUrl, collection);
+    }
+
+    return this.http.put<Collection>(`${ this.apiUrl }/${ collection.id }`, collection);
   }
 
-    public addObs(value:Collection): Observable<Collection> {
-    return this.http.post<Collection>(`${this.url}/collection`, value);
-  }
-
-    public update(value:Collection): Observable<Collection> {
-    return this.http.put<Collection>(`${this.url}/collection/${value.id }`,value);
+  public remove(collection: Collection): Observable<void> {
+    return this.http.delete<void>(`${ this.apiUrl }/${ collection.id }`);
   }
 }
