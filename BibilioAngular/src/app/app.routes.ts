@@ -5,7 +5,7 @@ import { EditeurPage } from './page/editeur-page/editeur-page';
 import { LivrePage } from './page/livre-page/livre-page';
 import { LoginPage } from './page/login-page/login-page';
 import { authGuard } from './guard/auth-guard';
-import { CollectionPage } from './Page/collection-page/collection-page';
+import { CollectionPage } from './page/collection-page/collection-page';
 
 export const routes: Routes = [
    {
