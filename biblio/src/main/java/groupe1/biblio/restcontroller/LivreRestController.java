@@ -18,7 +18,6 @@ import groupe1.biblio.model.Livre;
 
 @RestController
 @RequestMapping("/api/Livre")
-@CrossOrigin("*")
 public class LivreRestController {
 
 	@Autowired
