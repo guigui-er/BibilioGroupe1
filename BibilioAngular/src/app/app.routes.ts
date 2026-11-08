@@ -6,6 +6,7 @@ import { LivrePage } from './page/livre-page/livre-page';
 import { LoginPage } from './page/login-page/login-page';
 import { authGuard } from './guard/auth-guard';
 import { CollectionPage } from './page/collection-page/collection-page';
+import { InscriptionPage } from './page/inscription-page/inscription-page';
 
 export const routes: Routes = [
    {
@@ -40,8 +41,12 @@ export const routes: Routes = [
     component: LivrePage,
     canActivate: [ authGuard ]
   },
-    {
+  {
     path: 'login',
     component: LoginPage
   },
+    {
+    path: 'inscription',
+    component: InscriptionPage
+  }
 ];

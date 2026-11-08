@@ -45,4 +45,8 @@ export class LoginPage implements OnInit {
       this.router.navigate([ 'livre' ]);
     });
   }
+
+    protected inscription() {
+    this.router.navigate([ 'inscription' ]);
+  }
 }
