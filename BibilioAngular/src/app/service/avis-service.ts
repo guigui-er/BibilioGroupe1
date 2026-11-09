@@ -3,6 +3,7 @@ import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs/internal/Observable';
 import { Avis } from '../model/avis-interface';
 
+
 @Injectable({
     providedIn: 'root',
 })
@@ -22,4 +23,7 @@ export class AvisService {
         return this.http.put<Avis>(`${this.apiUrl}/${avis.id}`, avis);
     }
 
+    public remove(avis: Avis): Observable<void> {
+        return this.http.delete<void>(`${this.apiUrl}/${avis.id}`);
+    }
 }
