@@ -7,6 +7,7 @@ import { LoginPage } from './page/login-page/login-page';
 import { authGuard } from './guard/auth-guard';
 import { CollectionPage } from './page/collection-page/collection-page';
 import { InscriptionPage } from './page/inscription-page/inscription-page';
+import { AvisPage } from './page/avis-page/avis';
 
 export const routes: Routes = [
    {
@@ -45,8 +46,14 @@ export const routes: Routes = [
     path: 'login',
     component: LoginPage
   },
-    {
+  {
     path: 'inscription',
     component: InscriptionPage
+  },
+  {
+    path: 'avis',
+    component: AvisPage,
+    canActivate: [ authGuard ]
   }
+
 ];

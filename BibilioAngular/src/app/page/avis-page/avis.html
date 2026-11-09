@@ -1,1 +1,40 @@
-<p>avis works!</p>
+<h1>Liste des avis</h1>
+
+<form (submit)="ajouterOuModifier()" [formGroup]="formAvisGroup">
+  <div>
+    <input type="text" [formControl]="formAvisNoteCtrl" />
+  </div>
+ 
+  @if (formAvisNoteCtrl.dirty && formAvisNoteCtrl.hasError('required')) {
+    <div>
+      La note est obligatoire !
+    </div>
+  }
+
+  <div>
+    <button [disabled]="formAvisGroup.invalid" type="submit">Ajouter</button>
+  </div>
+</form>
+
+<table>
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Note</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    @for (avis of (avis$ | async); track avis.id) {
+      <tr>
+        <td>{{ avis.id }}</td>
+        <td>{{ avis.note}}</td>
+        <td>
+          <button (click)="editer(avis)">Editer</button>
+          <button (click)="supprimer(avis)">Supprimer</button>
+        </td>
+      </tr>
+    }
+  </tbody>
+</table>
