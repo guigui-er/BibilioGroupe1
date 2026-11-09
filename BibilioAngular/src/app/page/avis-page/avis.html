@@ -2,14 +2,26 @@
 
 <form (submit)="ajouterOuModifier()" [formGroup]="formAvisGroup">
   <div>
-    <input type="text" [formControl]="formAvisNoteCtrl" />
+    <input type="text" [formControl]="formAvisNoteCtrl" placeholder="note" />
   </div>
- 
+
+
   @if (formAvisNoteCtrl.dirty && formAvisNoteCtrl.hasError('required')) {
     <div>
       La note est obligatoire !
     </div>
   }
+
+    <label for="Livre">Livre : </label>
+    <select id="Livre" [formControl]="formAvisLivreCtrl" [compareWith]="memeId">
+      @for (a of (livres$ | async); track a.id) {
+          <option [ngValue]="a">{{ a.id}}-{{ a.titre}}</option>
+        }
+    </select>
+    
+  <div>
+    <input type="text" [formControl]="formAvisCommCtrl" placeholder="commentaire" />
+  </div>
 
   <div>
     <button [disabled]="formAvisGroup.invalid" type="submit">Ajouter</button>
@@ -20,8 +32,9 @@
   <thead>
     <tr>
       <th>Id</th>
-      <th>Note</th>
-      <th></th>
+      <th>Note /10</th>
+      <th>Titre</th>
+      <th>Commentaire</th>
     </tr>
   </thead>
 
@@ -30,11 +43,15 @@
       <tr>
         <td>{{ avis.id }}</td>
         <td>{{ avis.note}}</td>
+        <td>{{ avis.livre.id}}</td>
+        <td>{{ avis.commentaire}}</td>
+
         <td>
           <button (click)="editer(avis)">Editer</button>
           <button (click)="supprimer(avis)">Supprimer</button>
         </td>
       </tr>
     }
+
   </tbody>
 </table>
