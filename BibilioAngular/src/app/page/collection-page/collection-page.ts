@@ -58,6 +58,7 @@ export class CollectionPage implements OnInit {
     this.collectionService.save(collection).subscribe(() => {
       this.refresh$.next();
     });
+    this.editingCollectionId = undefined;
 
     this.formCollectionGroup.reset();
   }

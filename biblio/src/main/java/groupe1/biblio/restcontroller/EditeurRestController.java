@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @RestController 
 @RequestMapping ("/api/editeur")
-public class EditeurRestControlleur {
+public class EditeurRestController {
 
     @Autowired
 	IDAOEditeur daoEditeur;

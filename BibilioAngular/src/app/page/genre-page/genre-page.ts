@@ -57,6 +57,7 @@ export class GenrePage implements OnInit{
     this.genreService.save(genre).subscribe(() => {
       this.refresh$.next();
     });
+    this.editingGenreId = undefined;
 
     this.formGenreGroup.reset();
   }

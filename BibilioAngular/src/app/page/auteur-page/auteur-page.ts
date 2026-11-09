@@ -68,7 +68,7 @@ export class AuteurPage {
       this.auteurService.save(auteur).subscribe(() => {
         this.refresh$.next();
       });
-    
+    this.editingAuteurId = undefined;
     this.formAuteurGroup.reset();
   }
 
