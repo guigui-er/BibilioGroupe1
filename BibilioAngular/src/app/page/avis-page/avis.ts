@@ -3,11 +3,11 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Observable } from 'rxjs/internal/Observable';
 import { Subject } from 'rxjs/internal/Subject';
-import { Avis } from '../model/interfaces/avis-interface';
 import { Title } from '@angular/platform-browser';
-import { AvisService } from '../services/avis-service';
 import { switchMap } from 'rxjs/internal/operators/switchMap';
 import { startWith } from 'rxjs/internal/operators/startWith';
+import { Avis } from '../../model/avis-interface';
+import { AvisService } from '../../services/avis-service';
 
 @Component({
   imports: [
