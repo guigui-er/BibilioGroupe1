@@ -7,7 +7,7 @@ import { Title } from '@angular/platform-browser';
 import { switchMap } from 'rxjs/internal/operators/switchMap';
 import { startWith } from 'rxjs/internal/operators/startWith';
 import { Avis } from '../../model/avis-interface';
-import { AvisService } from '../../services/avis-service';
+import { AvisService } from '../../service/avis-service';
 
 @Component({
   imports: [

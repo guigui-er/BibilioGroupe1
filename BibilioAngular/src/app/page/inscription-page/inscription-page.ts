@@ -6,7 +6,7 @@ import { User } from '../../model/user';
 import { Subject } from 'rxjs';
 import { Router } from '@angular/router';
 import { AuthService } from '../../service/auth-service';
-import { InscriptionService } from './../../service/inscription-service';
+import { InscriptionService } from '../../service/inscription-service';
 
 
 @Component({

@@ -1,8 +1,8 @@
 
 
-import { Genre } from './../../model/genre';
-import { Auteur } from './../../model/auteur';
-import { Editeur } from './../../model/editeur';
+import { Genre } from '../../model/genre';
+import { Auteur } from '../../model/auteur';
+import { Editeur } from '../../model/editeur';
 
 import { Component, inject, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
