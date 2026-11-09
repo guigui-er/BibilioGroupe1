@@ -61,6 +61,7 @@ export class EditeurPage implements OnInit{
     this.editeurService.save(editeur).subscribe(() => {
       this.refresh$.next();
     });
+    this.editingEditeurId = undefined;
 
     this.formEditeurGroup.reset
   }
