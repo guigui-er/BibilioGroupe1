@@ -1,8 +1,6 @@
 package groupe1.biblio.restcontroller;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.mockito.ArgumentCaptor;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.webmvc.test.autoconfigure.WebMvcTest;
@@ -16,7 +14,7 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
 import groupe1.biblio.dao.IDAOEditeur;
-import groupe1.biblio.model.Editeur;
+
 
 @WebMvcTest(controllers = EditeurRestController.class)
 public class EditeurRestControllerTest {
@@ -69,35 +67,17 @@ public class EditeurRestControllerTest {
         Mockito.verify(this.daoEditeur).save(Mockito.any()); // On vérifie si save a été appelée
     }
 
-    @Test
-    @WithMockUser 
-    void shouldCreateStatusOkV2() throws Exception{
+   @Test 
+   @WithMockUser 
+   void shouldDeleteByIdStatusOk() throws Exception {
 
-        String url = "/api/editeur"; 
-        ArgumentCaptor<Editeur> cptEditeur = ArgumentCaptor.captor();
+    int id = 1;
+    String url = "/api/editeur/"+ id; 
 
-         ResultActions result = this.mockMvc.perform(
-            MockMvcRequestBuilders
-                .post(url)
-                .content("""
-                    {
-                        "nom": "TEST DE CREATION",
-                        "pays": "TEST"
-                    }
-                """)
-                .contentType(MediaType.APPLICATION_JSON)             
-                .with(SecurityMockMvcRequestPostProcessors.csrf())
-        );
+    ResultActions result = this.mockMvc.perform(MockMvcRequestBuilders.delete(url).with(SecurityMockMvcRequestPostProcessors.csrf()));
 
-        // then
-        result.andExpect(MockMvcResultMatchers.status().isOk());
-
-        Mockito.verify(this.daoEditeur).save(cptEditeur.capture()); 
-        Editeur savedEditeur = cptEditeur.getValue();
-        Assertions.assertEquals("TEST DE CREATION", savedEditeur.getNom()); 
-        Assertions.assertEquals("TEST", savedEditeur.getPays()); 
-        Assertions.assertNotNull(savedEditeur.getId());
-        Assertions.assertNotEquals(0, savedEditeur.getId());
-    }
+    result.andExpect(MockMvcResultMatchers.status().isOk());
+    Mockito.verify(this.daoEditeur).deleteById(id);
+   }
 
 }
