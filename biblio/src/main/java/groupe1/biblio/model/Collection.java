@@ -1,24 +1,29 @@
 package groupe1.biblio.model;
 
+
 import jakarta.persistence.Entity;
+
+import jakarta.persistence.Id;
+import jakarta.persistence.Column;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name="Collection")
+@Table(name="collection")
 public class Collection {
 
-        @Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
 
-    public Collection()
-    {}
+    @Column(length=100, nullable = false)
+    private String nom;
 
-    public Collection(Integer id) {
-    this.id = id;
+    public Collection () {}
+
+    public Collection(String nom) {
+        this.nom = nom;
     }
 
     public Integer getId() {
@@ -29,5 +34,17 @@ public class Collection {
         this.id = id;
     }
 
+    public String getNom() {
+        return nom;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    @Override
+    public String toString() {
+        return "Collection [nom=" + nom + "]";
+    }
 
 }

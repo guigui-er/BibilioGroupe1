@@ -1,0 +1,40 @@
+<h1>Liste des genres</h1>
+
+<form (submit)="ajouterOuModifier()" [formGroup]="formGenreGroup">
+  <div>
+    <input type="text" [formControl]="formGenreLibelleCtrl" />
+  </div>
+ 
+  @if (formGenreLibelleCtrl.dirty && formGenreLibelleCtrl.hasError('required')) {
+    <div>
+      Le libellé est obligatoire !
+    </div>
+  }
+
+  <div>
+    <button [disabled]="formGenreGroup.invalid" type="submit">Ajouter</button>
+  </div>
+</form>
+
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Libellé</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    @for (genre of (genres$ | async); track genre.id) {
+      <tr>
+        <td>{{ genre.id }}</td>
+        <td>{{ genre.libelle }}</td>
+        <td>
+          <button (click)="editer(genre)">Editer</button>
+          <button (click)="supprimer(genre)">Supprimer</button>
+        </td>
+      </tr>
+    }
+  </tbody>
+</table>
