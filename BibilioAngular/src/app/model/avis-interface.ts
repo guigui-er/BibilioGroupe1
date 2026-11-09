@@ -1,3 +1,5 @@
+import { Livre } from "./livre-interface";
+
 export interface Avis {
     id          ?: number;
     note        ?: number;
