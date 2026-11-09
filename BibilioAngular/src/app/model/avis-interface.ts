@@ -1,10 +1,10 @@
-import { Livre } from "./livre-interface";
+import { Livre } from "./livre";
 
 export interface Avis {
     id          ?: number;
-    note        ?: number;
-    commentaire ?: string;
-    date        ?: Date;
+    note        : number;
+    commentaire : string;
+    date        : Date;
 
-    livre       ?:Livre; // Pour utiliser les attributs de l'interface
+    livre       :Livre; // Pour utiliser les attributs de l'interface
 }
